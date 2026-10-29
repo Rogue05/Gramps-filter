@@ -1,0 +1,13 @@
+[
+  {
+    "n": "People with event ID",
+    "i": "PeopleWithEventId",
+    "t": 13,
+    "d": "Finds every person who participated in the event with the specified Gramps ID, regardless of their role.",
+    "v": "1.0.0",
+    "g": "6.1",
+    "s": 3,
+    "z": "EventParticipantsById.addon.tgz",
+    "h": "https://github.com/Rogue05/Gramps-filter"
+  }
+]

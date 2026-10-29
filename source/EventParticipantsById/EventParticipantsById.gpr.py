@@ -27,4 +27,5 @@ if (5, 2, 0) <= VERSION_TUPLE < (6, 2, 0):
         fname="EventParticipantsById.py",
         ruleclass="PeopleWithEventId",
         namespace="Person",
+        help_url="https://github.com/Rogue05/Gramps-filter#readme",
     )
