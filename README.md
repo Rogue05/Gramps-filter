@@ -1,7 +1,15 @@
-# People with Event ID (Gramps filter rule)
+# Gramps Event Add-ons
 
-A Gramps custom Person filter rule that finds **all people referenced by one
-event**, irrespective of their event role (Primary, Witness, Godparent, etc.).
+This repository provides two Gramps add-ons:
+
+- **People with event ID** — a Person filter rule that finds all people
+  referenced by an event ID, regardless of their event role.
+- **Events by Role** — an alternate Events view that gives each standard and
+  tree-specific custom event role its own column, including both people and
+  families.
+
+The Events by Role view shows one event per row. Participants in a role column
+are separated by semicolons. The standard Events view remains available.
 
 Enter the event's exact **Gramps ID** (for example, `E0012`). The rule resolves
 that ID once at the start of a filter run and matches people whose event
@@ -26,9 +34,12 @@ Use the URL for your Gramps version:
 
 In the Addon Manager **Projects** tab, add the matching **Listing URL** and
 refresh the list. If configuring the older **Where to check** project setting,
-use the **Project base URL** instead. Select **People with event ID** and
-install it. Restart Gramps, then find the rule in the People custom filter
-editor under **Event filters**.
+use the **Project base URL** instead. Select **People with event ID** and/or
+**Events by Role** and install them. Restart Gramps to use the add-ons.
+
+The filter rule is available in the People custom-filter editor under
+**Event filters**. **Events by Role** appears as an alternate view mode in the
+Events category.
 
 If the addon is not visible, set the Addon Manager's status filter to **All
 statuses**. For updates, refresh the project listing and install the offered
@@ -36,18 +47,18 @@ update.
 
 ### Manual installation
 
-Alternatively, download `EventParticipantsById.addon.tgz` from the `download/`
-folder for your Gramps version, then install that package using the Addon
-Manager. The two plugin files can also be copied from
-`source/EventParticipantsById/` into the Gramps user plugins directory.
+Alternatively, download either add-on's `.addon.tgz` package from the
+`download/` folder for your Gramps version, then install it using the Addon
+Manager. The plugin files can also be copied from the corresponding `source/`
+subdirectory into the Gramps user plugins directory.
 
 An empty or unknown ID matches no people. The rule matches every person
 referencing the event, regardless of role.
 
 ## Development
 
-The plugin source is in `source/EventParticipantsById/`. To regenerate the
-Addon Manager listings and packages after changing it, run:
+The plugin sources are in `source/`. To regenerate the Addon Manager listings
+and packages after changing either add-on, run:
 
 ```sh
 python3 tools/build_addons.py
@@ -56,8 +67,12 @@ python3 tools/build_addons.py
 Compile-check the Python files with:
 
 ```sh
-python3 -m py_compile source/EventParticipantsById/EventParticipantsById.py \
-  source/EventParticipantsById/EventParticipantsById.gpr.py tools/build_addons.py
+python3 -m py_compile \
+  source/EventParticipantsById/EventParticipantsById.py \
+  source/EventParticipantsById/EventParticipantsById.gpr.py \
+  source/EventsByRole/EventsByRole.py \
+  source/EventsByRole/EventsByRole.gpr.py \
+  tools/build_addons.py
 ```
 
 The runtime rule depends on Gramps and is intended to be loaded by Gramps'
